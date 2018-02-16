@@ -7,6 +7,7 @@ import { tryLogin, tryLogout } from '../../actions';
 export const LoginForm = ({tryLogin, auth}) => (
     <div class="login-top sign-top">
         <div class="agileits-login">
+        <br />
         <h5>Login</h5>
         <form action="#" method="post">
             <input type="email" class="email" name="Email" placeholder="Email" required=""/>
@@ -38,7 +39,7 @@ export const Login = ({tryLogin, logout, auth}) => {
     if(auth.isLoggedIn) {
         return (<div>
             <h2>Hi {auth.userData.username}!</h2>
-            <Button onClick={logout}>Logout</Button>
+            <button onClick={logout}>Logout</button>
         </div>  
         );
     } else {

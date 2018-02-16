@@ -18,6 +18,7 @@ import Patients from '../../components/Patients';
 import Users from '../../components/Users';
 import Patient from '../../components/Patient';
 import Login from '../../containers/Login';
+import Register from '../../containers/Register';
 
 const App = props => {
   
@@ -27,11 +28,8 @@ const App = props => {
         <CollapseNav />
         <Container fluid={true}>
           <Switch>
-            {/* <Route path='/login' component={Login} /> */}
-            <Route path='/tz/:timezone/pid/:patientId' component={Home} />
-            <Route path='/users' render={() => <Users />} />
-            <Route path='/patients' render={() => <Patients />} />
-            <Route path='/patient/:mrn' component={Patient} />
+            <Route path='/login' component={Login} /> 
+            <Route path='/register' component={Register} />
             <Route path='/' render={() => <Home match={{params: {patientId: "smart-1032702", timezone: 'cet'}}}  /> } />
           </Switch>
         </Container>
