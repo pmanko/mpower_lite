@@ -1,29 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { FormGroup, Label, Input, Card, CardTitle, CardText, Button } from 'reactstrap';
 
 import { tryLogin, tryLogout } from '../../actions';
 
-export const LoginForm = ({tryLogin, auth}) => (<div>
-    
-    <form className='px-3 py-2' onSubmit={e => {
-        e.preventDefault();
-        tryLogin(e);
-    }} >
-        <p style={{color: 'red'}}>{auth.errors}</p>
-        <FormGroup >
-            <Input type="email" name="email" id="email" placeholder="email" />
-        </FormGroup>
-        <FormGroup >
-            <Input type="password" name="password" id="password" placeholder="password" />
-        </FormGroup>
-        <Button block color='primary' type='submit'>Login</Button> 
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">New around here? Sign up</a>
-        <a class="dropdown-item" href="#">Forgot password?</a>
-    </form>
-</div>
+export const LoginForm = ({tryLogin, auth}) => (
+    <div class="login-top sign-top">
+        <div class="agileits-login">
+        <h5>Login</h5>
+        <form action="#" method="post">
+            <input type="email" class="email" name="Email" placeholder="Email" required=""/>
+            <input type="password" class="password" name="Password" placeholder="Password" required=""/>
+            <div class="wthree-text"> 
+                <ul> 
+                    <li>
+                        <label class="anim">
+                            <input type="checkbox" class="checkbox" />
+                            <span> Remember me ?</span> 
+                        </label> 
+                    </li>
+                    <li> <a href="#">Forgot password?</a> </li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>  
+            <div class="w3ls-submit"> 
+                <input type="submit" value="LOGIN" />  	
+            </div>	
+        </form>
+
+        </div>  
+    </div>
+
 )
 
 export const Login = ({tryLogin, logout, auth}) => {

@@ -1,3 +1,4 @@
+# Networking issue: make sure public profile does not block all connections
 version: '3.3'
 
 services:
@@ -5,9 +6,9 @@ services:
     restart: always
     build: './app'
     ports:
-      - "3030:3000"
+      - "3060:3000"
     volumes:
       - "./app:/usr/src/app"
     stdin_open: true
     tty: true
-    container_name: mpowerlite
+    container_name: tbapp

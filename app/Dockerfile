@@ -9,8 +9,9 @@ RUN npm install -g create-react-app \
 RUN mkdir -p /usr/src/app
 COPY . /usr/src/app
 
-WORKDIR /usr/src/app/mpowerlite
+WORKDIR /usr/src/app/tbapp
 
 # RUN yarn install
 
-CMD yarn start
+CMD bash
+

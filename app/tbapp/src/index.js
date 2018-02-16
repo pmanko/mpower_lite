@@ -5,7 +5,7 @@ import Root from './containers/Root';
 import registerServiceWorker from './registerServiceWorker';
 import { ActivityIndicator, ListView, Text, View } from 'react';
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const render = Component => {
   ReactDOM.render(
