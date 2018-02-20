@@ -11,4 +11,4 @@ services:
       - "./app:/usr/src/app"
     stdin_open: true
     tty: true
-    container_name: tbapp
+    container_name: tb-mobile-app
