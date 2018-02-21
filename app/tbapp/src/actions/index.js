@@ -53,3 +53,28 @@ export const tryLogout = () => ({
 export const toggleNav = () => ({
     type: types.TOGGLE_NAV,
 })
+
+export const addApp = (app) => ({
+    type: types.ADD_APP,
+    app: app
+})
+
+export const userLogin = (id, name) => ({
+    type: types.USER_LOGIN,
+    id: id,
+    name: name
+})
+
+export const userLogout = () => ({
+    type: types.USER_LOGOUT
+})
+
+export const fetchProfile = () => ({
+    type: types.FETCH_PROFILE
+})
+
+export const FetchProfileFulfilled = (profile) => ({
+    type: types.FETCH_PROFILE_FULFILLED,
+    profile: profile
+})
+

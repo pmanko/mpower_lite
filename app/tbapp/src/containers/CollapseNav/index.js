@@ -3,20 +3,15 @@ import {
     connect
 } from 'react-redux'
 
-import NavBar from '../../components/NavBar';
-
+import NavBar from '../../components/BottomNavBar';
 
 import {
     toggleNav
 } from '../../actions'
 
-import Jumbo from '../../components/Jumbo'
-
 const mapStateToProps = state => ({ collapsed: state.nav.collapsed,});
 
 const mapDispatchToProps = (dispatch) => {
-    console.log("Patching:");
-
     return {
         onToggle: () => dispatch(toggleNav())
     }

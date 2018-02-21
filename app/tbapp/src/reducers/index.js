@@ -1,18 +1,17 @@
 import {
     combineReducers
 } from 'redux';
-import { reducer as formReducer } from 'redux-form'
+import { authReducer as auth } from '../redux-implicit-oauth2'
 
-import auth from './auth'
+
 import sof from './sof'
 import nav from './nav'
-
+// import oauth from './oauth'
 
 const mpowerLiteApp = combineReducers({
     auth,
     sof,
-    nav,
-    form: formReducer
+    nav
 }) 
 
 export default mpowerLiteApp;

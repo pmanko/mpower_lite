@@ -1,72 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { login, logout } from '../../redux-implicit-oauth2'
+import { Button } from 'react-bootstrap';
 
-import { tryLogin, tryLogout } from '../../actions';
-
-export const LoginForm = ({tryLogin, auth}) => (
-    <div class="login-top sign-top">
-        <div class="agileits-login">
-        <br />
-        <h5>Login</h5>
-        <form action="#" method="post">
-            <input type="email" class="email" name="Email" placeholder="Email" required=""/>
-            <input type="password" class="password" name="Password" placeholder="Password" required=""/>
-            <div class="wthree-text"> 
-                <ul> 
-                    <li>
-                        <label class="anim">
-                            <input type="checkbox" class="checkbox" />
-                            <span> Remember me ?</span> 
-                        </label> 
-                    </li>
-                    <li> <a href="#">Forgot password?</a> </li>
-                </ul>
-                <div class="clearfix"> </div>
-            </div>  
-            <div class="w3ls-submit"> 
-                <input type="submit" value="LOGIN" />  	
-            </div>	
-        </form>
-
-        </div>  
-    </div>
-
-)
-
-export const Login = ({tryLogin, logout, auth}) => {
-    console.log(tryLogout);
-    if(auth.isLoggedIn) {
-        return (<div>
-            <h2>Hi {auth.userData.username}!</h2>
-            <button onClick={logout}>Logout</button>
-        </div>  
-        );
-    } else {
-        return <LoginForm tryLogin={tryLogin} auth={auth} />
-    }
-
+const config = {
+  url: "https://accounts.google.com/o/oauth2/v2/auth",
+  client: "527030791301-ndth0ds5anfck5nk1l40u4su2qqiq1v8.apps.googleusercontent.com",
+  redirect: "http://lvh.me:3060/redirect",
+  scope: "https://www.googleapis.com/auth/calendar.readonly",
+  prompt: 'consent',
 }
-    
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const Login = ({ isLoggedIn, login, logout }) => {
+  if (isLoggedIn) {
+    return <Button className='nav-link' onClick={logout}><i className="fa fa-sign-out" aria-hidden="true"></i>Logout</Button>
+  } else {
+    return <Button className='nav-link' onClick={login}><i className="fa fa-sign-in" aria-hidden="true"></i>Login</Button>
+  }
+}
+
+Login.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
+}
+
+const mapStateToProps = ({ auth }) => ({
+  isLoggedIn: auth.isLoggedIn
 })
 
-const mapDispatchToProps = dispatch => ({
-    tryLogin: (env) => {
-        const username = env.target.querySelector("input#email").value;
-        const password = env.target.querySelector("input#password").value;
+const mapDispatchToProps = {
+  login: () => login(config),
+  logout
+}
 
-        console.log(username)
-        console.log(password)
-
-        dispatch(tryLogin({username, password}))
-    },
-    logout: () => dispatch(tryLogout())
-})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
